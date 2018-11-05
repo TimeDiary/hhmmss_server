@@ -15,11 +15,6 @@ import os
 
 from django.core.exceptions import ImproperlyConfigured
 
-
-
-
-
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -41,6 +36,7 @@ def get_secret(setting):
     except KeyError:
         error_msg = "Set the {} environment variable".format(setting)
         raise ImproperlyConfigured
+
 
 SECRET_KEY = get_secret("SECRET_KEY")
 
@@ -74,10 +70,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'hhmmss.urls'
 
+DIRS = os.path.join(BASE_DIR, 'templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [DIRS, 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,6 +85,7 @@ TEMPLATES = [
             ],
         },
     },
+
 ]
 
 WSGI_APPLICATION = 'hhmmss.wsgi.application'
@@ -104,7 +102,8 @@ DATABASES = {
 
 # User Custom User Model
 AUTH_USER_MODEL = 'users.CustomUser'
-
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URl = 'home'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
