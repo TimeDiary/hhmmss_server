@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECRET KEY
-secret_file = os.path.join(BASE_DIR, 'TimeDiary/secrets.json')
+secret_file = os.path.join(BASE_DIR, 'hhmmss/secrets.json')
 
 
 def get_secret(setting):
@@ -70,7 +70,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'TimeDiary.urls'
+ROOT_URLCONF = 'hhmmss.urls'
 
 TEMPLATES = [
     {
