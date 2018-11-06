@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class TestpageConfig(AppConfig):
-    name = 'testPage'
+    name = 'tespage'
