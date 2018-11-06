@@ -1,4 +1,6 @@
 secrets.json
+google_client_id.json
+
 
 # Created by https://www.gitignore.io/api/git,linux,macos,python,django,android,pycharm,windows,virtualenv,androidstudio
 # Edit at https://www.gitignore.io/?templates=git,linux,macos,python,django,android,pycharm,windows,virtualenv,androidstudio
