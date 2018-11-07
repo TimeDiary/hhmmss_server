@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-class Settings(models.Model):
+class UserSetting(models.Model):
     # User
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
@@ -16,3 +16,6 @@ class Settings(models.Model):
     start_time = models.TimeField(default='09:00')
     # 반복 종료 시간
     end_time = models.TimeField(default='18:00')
+
+    def __str__(self):
+        return 'test' + '\'s settings'

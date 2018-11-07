@@ -61,11 +61,21 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 
+    'rest_framework',
+
     'users',
     'tespage',
     'timediary',
 
+
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.IsAdminUser',
+    ],
+    # 'PAGE_SIZE': 10
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -101,7 +111,7 @@ WSGI_APPLICATION = 'hhmmss.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
+# TODO: Modify to MySQL by saving data in json
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

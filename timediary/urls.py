@@ -1,6 +1,6 @@
 from django.urls import path
 
-from timediary import views
+from . import views
 
 urlpatterns = [
     path('', views, name='timediary')

@@ -1,15 +1,15 @@
 from django.contrib import admin
 
 # from .forms import TimediaryCreationForm, TimediaryChangeForm
-from .models import Settings
+from .models import UserSetting
 
 
-class SettingsAdmin(admin.ModelAdmin):
-    #  model = Settings
+class UserSettingAdmin(admin.ModelAdmin):
+    #  model = UserSetting
     # add_form = CustomUserCreationForm
     # form = CustomUserChangeForm
     fields = ['user', 'repeat_period', 'start_time', 'end_time']
 
 
-admin.site.register(Settings, SettingsAdmin)
+admin.site.register(UserSetting, UserSettingAdmin)
 

@@ -14,11 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+
 from django.urls import path, include
+from rest_framework import routers
+from timediary import views as timediaryViews
+
+router = routers.DefaultRouter()
+router.register(r'UserSetting', timediaryViews.UserSettingViewSet)
 
 urlpatterns = [
     # Main
-    path('', include('tespage.urls')),
+    path('testpage/', include('tespage.urls')),
 
     # Django Admin
     path('users/', include('users.urls')),
@@ -27,4 +33,12 @@ urlpatterns = [
 
     # Django Admin
     path('admin/', admin.site.urls),
+
+    # TimeDiary
+    # path('timediary/', include('timediary.urls')),
+
+    # DRF to Timediary
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+
 ]
