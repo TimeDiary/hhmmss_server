@@ -112,10 +112,15 @@ WSGI_APPLICATION = 'hhmmss.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 # TODO: Modify to MySQL by saving data in json
+mysql_info = get_secret("MYSQL")
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': mysql_info["NAME"],
+        'USER': mysql_info["USER"],
+        'PASSWORD': mysql_info["PASSWORD"],
+        'HOST': mysql_info["HOST"],
+        'PORT': mysql_info["PORT"],
     }
 }
 
