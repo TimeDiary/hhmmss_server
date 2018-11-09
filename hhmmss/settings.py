@@ -62,18 +62,28 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
     'rest_framework',
+    # 'rest_framework.authtoken'
+    
+    'rest_auth',
 
     'users',
     'tespage',
     'timediary',
 
-
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.permissions.IsAdminUser',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+
     ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+
+
+    ]
     # 'PAGE_SIZE': 10
 }
 
