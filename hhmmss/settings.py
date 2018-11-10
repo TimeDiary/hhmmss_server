@@ -35,7 +35,7 @@ def get_secret(setting):
         return secrets[setting]
     except KeyError:
         error_msg = "Set the {} environment variable".format(setting)
-        raise ImproperlyConfigured
+        raise ImproperlyConfigured(error_msg)
 
 
 SECRET_KEY = get_secret("SECRET_KEY")
@@ -61,10 +61,30 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 
+    'rest_framework',
+
+
+    # hhmmss's apps
     'users',
-    'testPage',
+
+    'tespage',
+    'timediary',
 
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.permissions.IsAdminUser',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+
+    ]
+    # 'PAGE_SIZE': 10
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -100,11 +120,15 @@ WSGI_APPLICATION = 'hhmmss.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
+mysql_info = get_secret("MYSQL")
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': mysql_info["NAME"],
+        'USER': mysql_info["USER"],
+        'PASSWORD': mysql_info["PASSWORD"],
+        'HOST': mysql_info["HOST"],
+        'PORT': mysql_info["PORT"],
     }
 }
 

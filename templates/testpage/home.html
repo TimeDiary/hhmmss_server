@@ -1,0 +1,12 @@
+{% load socialaccount %}
+
+<h1>hhmmss</h1>
+{%  if user.is_authenticated %}
+<p>Welcome {{  users.username }}</p>
+<p><a href="{% url 'account_logout' %}">Log Out</a></p>
+{% else %}
+<p><a href="{% url 'account_signup' %}">Sign Up</a></p>
+<p><a href="{% url 'account_login' %}">Log In</a></p>
+    <p><a href="{% provider_login_url 'google' %}">Login In with Gmail</a></p>
+{% endif %}
+
