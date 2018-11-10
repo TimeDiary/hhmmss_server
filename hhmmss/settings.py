@@ -63,20 +63,26 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
-
     # hhmmss's apps
     'users',
 
     'tespage',
     'timediary',
 
+    'oauth2_provider',
+    'social_django',
+    'rest_framework_social_oauth2',
+
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.permissions.IsAdminUser',
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework_social_oauth2.authentication.SocialAuthentication',
 
     ],
     'DEFAULT_PERMISSION_CLASSES': [
@@ -96,6 +102,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'social_django.context_processors.backends',
+    'social_django.context_processors.login_redirect',
+)
+
 ROOT_URLCONF = 'hhmmss.urls'
 
 DIRS = os.path.join(BASE_DIR, 'templates')
@@ -110,6 +121,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -139,8 +152,9 @@ LOGOUT_REDIRECT_URl = 'home'
 
 # Authentication Backends to use the existing ModelBackend.
 AUTHENTICATION_BACKENDS = (
-    "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+    # 'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 SITE_ID = 1

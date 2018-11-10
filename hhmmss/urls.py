@@ -26,10 +26,15 @@ urlpatterns = [
     # Main
     path('testpage/', include('tespage.urls')),
 
-    # Django Admin
+    # user
     path('users/', include('users.urls')),
-    path('users/', include('django.contrib.auth.urls')),
-    path('accounts/', include('allauth.urls')),
+
+    # Social OAuth2
+    path('auth/', include('rest_framework_social_oauth2.urls')),
+
+
+    # path('users/', include('django.contrib.auth.urls')),
+    # path('accounts/', include('allauth.urls')),
 
     # Django Admin
     path('admin/', admin.site.urls),
