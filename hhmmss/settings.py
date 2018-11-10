@@ -62,11 +62,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
     'rest_framework',
-    # 'rest_framework.authtoken'
-    
-    'rest_auth',
 
+
+    # hhmmss's apps
     'users',
+
     'tespage',
     'timediary',
 
@@ -81,7 +81,6 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-
 
     ]
     # 'PAGE_SIZE': 10
@@ -121,7 +120,6 @@ WSGI_APPLICATION = 'hhmmss.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-# TODO: Modify to MySQL by saving data in json
 mysql_info = get_secret("MYSQL")
 DATABASES = {
     'default': {
