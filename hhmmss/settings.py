@@ -45,28 +45,39 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# Application definition
+# Authentication Backends to use the existing ModelBackend.
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
 
+# Application definition
 INSTALLED_APPS = [
+    # django basic
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.messages',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    # allauth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 
+    # rest_framework
     'rest_framework',
+
+    # rest_auth
+    'rest_auth',
+    'rest_auth.registration',
 
 
     # hhmmss's apps
     'users',
-
     'tespage',
     'timediary',
 
@@ -80,7 +91,7 @@ REST_FRAMEWORK = {
 
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
 
     ]
     # 'PAGE_SIZE': 10
@@ -137,11 +148,6 @@ AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URl = 'home'
 
-# Authentication Backends to use the existing ModelBackend.
-AUTHENTICATION_BACKENDS = (
-    "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
 
 SITE_ID = 1
 

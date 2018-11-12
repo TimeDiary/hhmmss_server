@@ -29,7 +29,14 @@ urlpatterns = [
     # Django Admin
     path('users/', include('users.urls')),
     path('users/', include('django.contrib.auth.urls')),
+
+
+    # allauth
     path('accounts/', include('allauth.urls')),
+
+    # rest_auth
+    path('rest-auth/', include('rest_auth.urls')),
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
 
     # Django Admin
     path('admin/', admin.site.urls),
