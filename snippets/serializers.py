@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser as User
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from snippets.models import Location
