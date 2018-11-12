@@ -39,4 +39,10 @@ urlpatterns = [
 
     # DRF
     path('', include(router.urls)),
+
+    # snipeets
+    path('snippets/', include('snippets.urls')),
+
+    path('api-auth/', include('rest_framework.urls', namespace='rest_fremework')),
+
 ]

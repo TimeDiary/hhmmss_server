@@ -62,10 +62,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
     'rest_framework',
+    'rest_framework.authtoken',
 
 
     # hhmmss's apps
     'users',
+    'snippets',
 
     'tespage',
     'timediary',
