@@ -19,17 +19,21 @@ from django.urls import path, include
 from rest_framework import routers
 from timediary import views as timediaryViews
 
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from rest_auth.registration.views import SocialLoginView
+
 router = routers.DefaultRouter()
 router.register(r'UserSetting', timediaryViews.UserSettingViewSet)
 
+
+# rest_auth
+class GoogleLogin(SocialLoginView):
+    adapter_class = GoogleOAuth2Adapter
+
+
 urlpatterns = [
-    # Main
+    # testpage
     path('testpage/', include('tespage.urls')),
-
-    # Django Admin
-    path('users/', include('users.urls')),
-    path('users/', include('django.contrib.auth.urls')),
-
 
     # allauth
     path('accounts/', include('allauth.urls')),
@@ -37,6 +41,7 @@ urlpatterns = [
     # rest_auth
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('rest-auth/google/', GoogleLogin.as_view(), name='google_login'),
 
     # Django Admin
     path('admin/', admin.site.urls),
