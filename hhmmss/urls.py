@@ -20,7 +20,8 @@ from rest_framework import routers
 from timediary import views as timediaryViews
 
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
-from rest_auth.registration.views import SocialLoginView
+from rest_auth.registration.views import SocialLoginView, SocialConnectView, SocialAccountListView, \
+    SocialAccountDisconnectView
 
 router = routers.DefaultRouter()
 router.register(r'UserSetting', timediaryViews.UserSettingViewSet)
@@ -28,6 +29,10 @@ router.register(r'UserSetting', timediaryViews.UserSettingViewSet)
 
 # rest_auth
 class GoogleLogin(SocialLoginView):
+    adapter_class = GoogleOAuth2Adapter
+
+
+class GoogleConnect(SocialConnectView):
     adapter_class = GoogleOAuth2Adapter
 
 
@@ -42,6 +47,10 @@ urlpatterns = [
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('rest-auth/google/', GoogleLogin.as_view(), name='google_login'),
+    path('rest-auth/google/connect/', GoogleConnect.as_view(), name='google_connect'),
+    path('socialaccounts/', SocialAccountListView.as_view(), name='social_account_list'),
+    path('socialaccounts/<int:pk>/disconnect/', SocialAccountDisconnectView.as_view(),
+         name='social_account_disconnect'),
 
     # Django Admin
     path('admin/', admin.site.urls),
