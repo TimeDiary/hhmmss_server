@@ -8,7 +8,5 @@ class CustomUserManager(UserManager):
     USERNAME_FIELD = 'myname'
 
 
-
-
 class CustomUser(AbstractUser):
     objects = CustomUserManager()

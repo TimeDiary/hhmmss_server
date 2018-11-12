@@ -1,6 +1,6 @@
 from django.conf import settings
 from snippets.models import Location
-from django.contrib.auth.models import AbstractUser as User
+from django.contrib.auth.models import User
 from snippets.serializers import LocationSerializer, UserSerializer
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
@@ -23,7 +23,7 @@ class UserDetail(RetrieveAPIView):
 
 
 class LocationList(ListCreateAPIView):
-    queryset = Location.ojbects.all()
+    queryset = Location.objects.all()
     serializer_class = LocationSerializer
     permission_classes = (IsAuthenticated,)
     authentication_classes = (TokenAuthentication,)

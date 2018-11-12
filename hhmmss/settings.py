@@ -64,12 +64,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
 
-
     # hhmmss's apps
-    'users',
+    # 'users',
     'snippets',
 
-    'tespage',
+    'testPage',
     'timediary',
 
 ]
@@ -77,12 +76,12 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.permissions.IsAdminUser',
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
 
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
 
     ]
     # 'PAGE_SIZE': 10
@@ -134,20 +133,23 @@ DATABASES = {
     }
 }
 
+
 # User Custom User Model
-AUTH_USER_MODEL = 'users.CustomUser'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URl = 'home'
+AUTH_USER_MODEL = 'auth.User'
+LOGIN_REDIRECT_URL = ''
+LOGOUT_REDIRECT_URl = ''
 
 # Authentication Backends to use the existing ModelBackend.
-AUTHENTICATION_BACKENDS = (
-    "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
+# AUTHENTICATION_BACKENDS = (
+#     "django.contrib.auth.backends.ModelBackend",
+#         "allauth.account.auth_backends.AuthenticationBackend",
+# )
 
 SITE_ID = 1
 
-ACCOUNT_EMAIL_REQUIRED = True
+# TODO: Change User to defaut User model.
+
+# ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 
 # Password validation
