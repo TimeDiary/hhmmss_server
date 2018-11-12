@@ -76,7 +76,6 @@ INSTALLED_APPS = [
     'rest_auth',
     'rest_auth.registration',
 
-
     # hhmmss's apps
     'users',
     'tespage',
@@ -97,6 +96,8 @@ REST_FRAMEWORK = {
     ]
     # 'PAGE_SIZE': 10
 }
+
+REST_USE_JWT = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -148,7 +149,6 @@ DATABASES = {
 AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URl = 'home'
-
 
 SITE_ID = 1
 
